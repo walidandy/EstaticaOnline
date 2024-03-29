@@ -21,7 +21,7 @@ La ingeniería es una disciplina que se encarga de resolver problemas de la vida
 ```{code-cell}
 diam=0.5
 area=3.1416*(diam*2.54)**2/4
-print (round(area,2))
+print ('area=',round(area,2))
 ```
 
 ## Sistema de Unidades
