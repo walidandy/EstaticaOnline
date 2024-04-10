@@ -57,6 +57,8 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Capitulo 2';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -172,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Introduction to Statics
+                    Estatica
                 </a>
             </li>
         </ul>
@@ -352,7 +354,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -368,6 +372,14 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adicion-de-fuerzas-coplanares">Adición de Fuerzas Coplanares</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -379,7 +391,53 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capitulo-2">
 <h1>Capitulo 2<a class="headerlink" href="#capitulo-2" title="Link to this heading">#</a></h1>
-<p>Here is the 2nd chapter of the book. Hello !</p>
+<p>En este 2do capitulo se desarrollará todo lo relacionado a vectores, y tendrá la siguiente estructura:</p>
+<ol class="arabic simple">
+<li><p>Adición de Fuerzas Coplanares</p></li>
+<li><p>Adición de Fuerzas por Componentes</p></li>
+<li><p>Fuerzas y Equilibrio en un plano</p></li>
+<li><p>Adición de fuerzas en el espacio</p></li>
+<li><p>Fuerzas y equilibrio en el espacio</p></li>
+</ol>
+<p>Como se puede apreciar en una primera instancia se verá un espacio bidimensional para luego pasar a un espacio tridimensional.</p>
+<section id="adicion-de-fuerzas-coplanares">
+<h2>Adición de Fuerzas Coplanares<a class="headerlink" href="#adicion-de-fuerzas-coplanares" title="Link to this heading">#</a></h2>
+<p>Primero se debe comprender que una fuerza es una magnitud vectorial ya que es representada por un vector, la misma que posee las siguientes características:</p>
+<figure class="align-default" id="vector">
+<a class="reference internal image-reference" href="_images/3.svg"><img alt="_images/3.svg" height="300px" src="_images/3.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Vector</span><a class="headerlink" href="#vector" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Un <strong>vector</strong>  puede representarse de esta forma, por su sentido (1) , punto de aplicación (ángulo respecto a la horizontal) (2) y linea de acción (3).</p>
+<p>A continuación tres formas de hallar la resultante:</p>
+<ul class="simple">
+<li><p><strong>Ley del Paralelogramo</strong></p></li>
+</ul>
+<figure class="align-default" id="paralelogramo">
+<a class="reference internal image-reference" href="_images/4.svg"><img alt="_images/4.svg" height="400px" src="_images/4.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Paralelogramo</span><a class="headerlink" href="#paralelogramo" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<div class="math notranslate nohighlight">
+\[R^2=P^2+Q^2+2*P*Q*sin\beta\]</div>
+<div class="math notranslate nohighlight">
+\[\theta=tan^{-1}\Biggl(\frac{P*sin\beta}{P*cos\beta+Q}\Biggl)\]</div>
+<ul class="simple">
+<li><p><strong>Método del Triángulo</strong></p></li>
+</ul>
+<p>Maneja el mismo concepto que el anterior, desplazando solamente un vector hacia el lado opuesto.</p>
+<ul class="simple">
+<li><p><strong>Método del Polígono</strong></p></li>
+</ul>
+<figure class="align-default" id="poligono">
+<a class="reference internal image-reference" href="_images/5.svg"><img alt="_images/5.svg" height="300px" src="_images/5.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Poligono</span><a class="headerlink" href="#poligono" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -437,7 +495,20 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adicion-de-fuerzas-coplanares">Adición de Fuerzas Coplanares</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

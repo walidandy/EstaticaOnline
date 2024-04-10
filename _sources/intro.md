@@ -1,6 +1,6 @@
 # Estatica
 
-This course is an introduction to the static analysis of structures. The course is divided into three main sections:
+El curso de estática le brindará al estudiante los conceptos necesarios para conseguir el equilibrio en un sistema dado las condiciones condiciones de contorno y apoyos. En una primera instancia se desarrollará una breve explicación sobre la mecánica y cuán importante es estudiarla como una ciencia, que no es de uso exclusivo para la ingeniería civil sino también es usada para otras como la ingeniería aeroespacial, que por cierto desarrolla muchos más conceptos que la ingeniería civil. A continuación se explicará el sistema de unidades que se emplean no solo de manera teórica sino también en la realidad para que el estudiante se relacione con su medio desde ahora y vea como realizar conversiones entre un sistema y otro. Una vez desarrollado ello, se procederá con la teoría acerca de vectores y como trabajar con ellos para conseguir el equilibrio de un determinado sistema, comenzando en un espacio bidemensional para continuar con el tridimensional.
 
 ```{tableofcontents}
 ```

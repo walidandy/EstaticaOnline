@@ -57,11 +57,13 @@
     <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Capitulo 1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Capitulo 2" href="Capitulo%202.html" />
-    <link rel="prev" title="Introduction to Statics" href="intro.html" />
+    <link rel="prev" title="Estatica" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -172,7 +174,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="intro.html">
-                    Introduction to Statics
+                    Estatica
                 </a>
             </li>
         </ul>
@@ -375,16 +377,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mecanica">Mecánica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-fundamentales-y-principios">Conceptos fundamentales y Principios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-de-unidades">Sistema de Unidades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-unidades">Conversion de Unidades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos">Ejemplos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios">Ejercicios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soluciones">Soluciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notas">Notas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulario">Formulario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-entre-2-sistemas-de-unidades">Conversión entre 2 sistemas de unidades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-resolucion-de-problemas">Métodos de resolución de problemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-numerica">Precisión Numérica</a></li>
 </ul>
             </nav>
         </div>
@@ -398,59 +396,191 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="capitulo-1">
 <h1>Capitulo 1<a class="headerlink" href="#capitulo-1" title="Link to this heading">#</a></h1>
-<section id="introduccion">
-<h2>Introducción<a class="headerlink" href="#introduccion" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">diam</span><span class="o">=</span><span class="mf">0.5</span>
-<span class="n">area</span><span class="o">=</span><span class="mf">3.1416</span><span class="o">*</span><span class="p">(</span><span class="n">diam</span><span class="o">*</span><span class="mf">2.54</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">/</span><span class="mi">4</span>
-<span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;area=&#39;</span><span class="p">,</span><span class="nb">round</span><span class="p">(</span><span class="n">area</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>area= 1.27
-</pre></div>
-</div>
-</div>
-</div>
+<section id="mecanica">
+<h2>Mecánica<a class="headerlink" href="#mecanica" title="Link to this heading">#</a></h2>
+<p>La mecánica es considerada una ciencia que describe y predice condiciones de reposo o movimiento bajo la acción de diversas cargas, dentro de la ingeniería civil podemos considerar gran cantidad de cargas que a lo largo de la carrera se irán viendo. Esta mecánica que se ha desarrollado a lo largo de la historia, ha sido empleada para resolver problemas de la realidad (ingeniería) , por lo tanto toma en cuenta muchos de los materiales de la realidad, desde aquellos que pueden deformarse hasta los fluidos, como puede apreciar en el siguiente diagrama:</p>
+<figure class="align-default" id="mechanics-and-divisions">
+<a class="reference internal image-reference" href="_images/1.svg"><img alt="_images/1.svg" height="500px" src="_images/1.svg" /></a>
+<figcaption>
+<p><span class="caption-text">La Mecánica y sus divisiones</span><a class="headerlink" href="#mechanics-and-divisions" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Cuando se habla de un elemento rígido, no significa que este nunca experimentará deformaciones , sino más bien las deformaciones son tan pequeñas que no afectarán el equilibrio del sistema. Los elementos rígidos por otro lado si sufren deformaciones sustanciales que son de suma importancia para conseguir el equilibrio, por citar un elemento de este tipo son las columnas esbeltas o de gran altura donde se presentarán momentos de segundo orden (efectos <span class="math notranslate nohighlight">\(p-\Delta\)</span> y <span class="math notranslate nohighlight">\(\delta\)</span>), pero esto no se estudiará en esta primera sección.</p>
+</section>
+<section id="conceptos-fundamentales-y-principios">
+<h2>Conceptos fundamentales y Principios<a class="headerlink" href="#conceptos-fundamentales-y-principios" title="Link to this heading">#</a></h2>
+<p>Antes de sumerginos en los principios, es necesario entender los siguientes conceptos:</p>
+<ul class="simple">
+<li><p>Espacio: Lugar donde se encuentra un punto</p></li>
+<li><p>Tiempo: Duración de un evento</p></li>
+<li><p>Masa: Cantidad de materia</p></li>
+<li><p>Fuerza: Representa la acción de un cuerpo sobre otro</p></li>
+</ul>
+<p>La mecánica como hoy la conocemos es producto de los trabajos y estudios realizados por sir Isaac Newton; y aún esta vigente para muchas aplicaciones, siempre en cuando las velocidades de las partículas no superen la velocidad de la luz. Si se supera esta velocidad es necesario recurrir a la teoría de la relatividad propuesta por Einstein. La mecánica clásica como se conoce, ha sido empleada durante siglos en la historia de la humanidad para una inmensa cantidad de proyectos civiles, por ejemplo.</p>
+<p>Existen 6 principios fundamentales en la mecánica clásica, estos fueron verificados mediante experimentos o deducciones matemáticas:</p>
+<figure class="align-default" id="principios-de-la-mecanica">
+<a class="reference internal image-reference" href="_images/2.svg"><img alt="_images/2.svg" height="700px" src="_images/2.svg" /></a>
+<figcaption>
+<p><span class="caption-text">6 Principios Fundamentales de la Mecánica</span><a class="headerlink" href="#principios-de-la-mecanica" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="sistema-de-unidades">
 <h2>Sistema de Unidades<a class="headerlink" href="#sistema-de-unidades" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
+<p>Existen 2 sistemas:</p>
+<ul class="simple">
+<li><p>Sistema Internacional (SI)</p></li>
+<li><p>Sistema Inglés (Ingles) Americano o Imperial</p></li>
+</ul>
+<p>Es necesario comprender que las cantidades físicas asociadas a estas unidades fueron tomadas de manera arbitraria. A continuación, se definirán 3 unidades básicas y una derivada:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad Cinética</p></th>
+<th class="head"><p>Unidad</p></th>
+<th class="head"><p>Símbolo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Longitud</p></td>
+<td><p>Metro</p></td>
+<td><p>m</p></td>
+</tr>
+<tr class="row-odd"><td><p>Masa</p></td>
+<td><p>Kilogramo</p></td>
+<td><p>kg</p></td>
+</tr>
+<tr class="row-even"><td><p>Tiempo</p></td>
+<td><p>Segundo</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuerza</p></td>
+<td><p>Newton</p></td>
+<td><p>N</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Newton (N) = kgf * m/s²</p>
+</div>
+<p>Lo mismo en el sistema americano, solo que la unidad derivada es la masa:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad Cinética</p></th>
+<th class="head"><p>Unidad</p></th>
+<th class="head"><p>Símbolo</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Longitud</p></td>
+<td><p>Pie</p></td>
+<td><p>ft</p></td>
+</tr>
+<tr class="row-odd"><td><p>Masa</p></td>
+<td><p>Slug</p></td>
+<td><p>slug</p></td>
+</tr>
+<tr class="row-even"><td><p>Tiempo</p></td>
+<td><p>Segundo</p></td>
+<td><p>s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuerza</p></td>
+<td><p>Libra</p></td>
+<td><p>lb</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>1/32.2 lbf *s2 / ft = 1 lbm</p>
+<p>lbf * s2 / ft = slug</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>lbm <span class="math notranslate nohighlight">\(\neq\)</span> lbf</p>
+</div>
 </section>
-<section id="conversion-de-unidades">
-<h2>Conversion de Unidades<a class="headerlink" href="#conversion-de-unidades" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
+<section id="conversion-entre-2-sistemas-de-unidades">
+<h2>Conversión entre 2 sistemas de unidades<a class="headerlink" href="#conversion-entre-2-sistemas-de-unidades" title="Link to this heading">#</a></h2>
+<p>Debemos recordar las siguientes equivalencias:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Unidad Cinética</p></th>
+<th class="head"><p>Unidad</p></th>
+<th class="head"><p>Símbolo</p></th>
+<th class="head"><p>Equivalencia</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Longitud</p></td>
+<td><p>Metro</p></td>
+<td><p>m</p></td>
+<td><p>1 ft = 0.3048 ft</p></td>
+</tr>
+<tr class="row-odd"><td><p>Masa</p></td>
+<td><p>Kilogramo</p></td>
+<td><p>kg</p></td>
+<td><p>1 kg = 2.205 lbm</p></td>
+</tr>
+<tr class="row-even"><td><p>Tiempo</p></td>
+<td><p>Segundo</p></td>
+<td><p>s</p></td>
+<td><p>1 s = 1 s</p></td>
+</tr>
+<tr class="row-odd"><td><p>Fuerza</p></td>
+<td><p>Newton</p></td>
+<td><p>N</p></td>
+<td><p>1 N = 0.225 lbf</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>g = 32.2 ft/s² = 9.81 m/s²</p>
+<p>9.81N = 1kgf ( F=ma <span class="math notranslate nohighlight">\(\Rightarrow\)</span> 9.81N = 1kgm*9.81m/s² = 1kgf )</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>1kgf <span class="math notranslate nohighlight">\(\neq\)</span> 1kg</p>
+</div>
+<div class="math notranslate nohighlight">
+\[F=ma\]</div>
+<div class="math notranslate nohighlight">
+\[1N=1kg*\frac{m}{s^2}...(1)\]</div>
+<div class="math notranslate nohighlight">
+\[1lbf=1lmb*32.2*\frac{ft}{s^2}...(2)\]</div>
+<p>Considerando los siguientes valores, podemos reemplazar en las ecuaciones anteriores:</p>
+<div class="math notranslate nohighlight">
+\[1kg=2.2lbm\]</div>
+<div class="math notranslate nohighlight">
+\[1ft=0.3048m\]</div>
+<p>Finalmente, tenemos:</p>
+<div class="math notranslate nohighlight">
+\[1lbf=\frac{1}{2.2}kg*32.2*0.3048*\frac{m}{s^2}=\frac{0.3048*32.2}{2.2}N\]</div>
+<div class="math notranslate nohighlight">
+\[1lbf=4.46N\]</div>
+<div class="math notranslate nohighlight">
+\[1N=0.225lbf\]</div>
 </section>
-<section id="ejemplos">
-<h2>Ejemplos<a class="headerlink" href="#ejemplos" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
+<section id="metodos-de-resolucion-de-problemas">
+<h2>Métodos de resolución de problemas<a class="headerlink" href="#metodos-de-resolucion-de-problemas" title="Link to this heading">#</a></h2>
+<p>Dentro de la resolución de problemas es muy importante tener en cuenta los siguientes puntos:</p>
+<p>El <strong>diagrama de cuerpo de libre</strong> es uno de ellos, y es de vital importancia ya que a partir de aquí se comienza con la resolución misma del problema. De no realizar un correcto diagrama, todo lo demás será hecho en vano. Para realizar un correcto proceso, se debe considerar el comportamiento de cada elemento del sistema para definir la dirección (sentido y linea de acción) de las fuerzas. El siguiente ejemplo muestra como se comportan los cables cuando un objecto es dispuesto de manera vertical:</p>
+<figure class="align-default" id="dcl">
+<a class="reference internal image-reference" href="_images/DCL.svg"><img alt="_images/DCL.svg" height="500px" src="_images/DCL.svg" /></a>
+<figcaption>
+<p><span class="caption-text">Diagrama de Cuerpo Libre</span><a class="headerlink" href="#dcl" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Por otro lado es de mucha importancia considerar la <strong>revisión</strong> de los resultados, antes de brindar una respuesta definitiva. Esto incluye:</p>
+<ul class="simple">
+<li><p>El correcto uso de las <em>unidades</em> en los cálculos.</p></li>
+<li><p>Revisión de la <em>coherencia</em> de los resultados con la realidad.</p></li>
+</ul>
 </section>
-<section id="resumen">
-<h2>Resumen<a class="headerlink" href="#resumen" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-</section>
-<section id="ejercicios">
-<h2>Ejercicios<a class="headerlink" href="#ejercicios" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-</section>
-<section id="soluciones">
-<h2>Soluciones<a class="headerlink" href="#soluciones" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-</section>
-<section id="referencias">
-<h2>Referencias<a class="headerlink" href="#referencias" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-</section>
-<section id="notas">
-<h2>Notas<a class="headerlink" href="#notas" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
-</section>
-<section id="formulario">
-<h2>Formulario<a class="headerlink" href="#formulario" title="Link to this heading">#</a></h2>
-<p>La ingeniería es una disciplina que se encarga de resolver problemas de la vida cotidiana, para ello se vale de la ciencia y la tecnología. La ingeniería se divide en varias ramas, entre las cuales se encuentran la ingeniería civil, la ingeniería mecánica, la ingeniería eléctrica, la ingeniería química, la ingeniería industrial, la ingeniería de sistemas, entre otras. Cada una de estas ramas se encarga de resolver problemas específicos, sin embargo, todas tienen en común el uso de las matemáticas y la física para resolver problemas.</p>
+<section id="precision-numerica">
+<h2>Precisión Numérica<a class="headerlink" href="#precision-numerica" title="Link to this heading">#</a></h2>
+<p>Dependiendo de unidad, se considerará hasta 3 o 4 decimales según sea el caso. El hecho de incrementar más decimales será infructuoso.</p>
 </section>
 </section>
 
@@ -490,7 +620,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction to Statics</p>
+        <p class="prev-next-title">Estatica</p>
       </div>
     </a>
     <a class="right-next"
@@ -518,16 +648,12 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduccion">Introducción</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mecanica">Mecánica</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conceptos-fundamentales-y-principios">Conceptos fundamentales y Principios</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sistema-de-unidades">Sistema de Unidades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-de-unidades">Conversion de Unidades</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejemplos">Ejemplos</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resumen">Resumen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ejercicios">Ejercicios</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#soluciones">Soluciones</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#referencias">Referencias</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#notas">Notas</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulario">Formulario</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-entre-2-sistemas-de-unidades">Conversión entre 2 sistemas de unidades</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-resolucion-de-problemas">Métodos de resolución de problemas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precision-numerica">Precisión Numérica</a></li>
 </ul>
   </nav></div>
 
